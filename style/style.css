@@ -1,0 +1,292 @@
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Spartan", sans-serif;
+}
+
+html {
+  font-size: 12px;
+}
+
+img:not(.logo) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+
+.close, .open {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.overlay {
+  display: none;
+}
+
+.gridMain {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas: "main main main main main main text1 text1 text1 text1" "LP LP LP about about about about chair chair chair";
+  grid-template-rows: 60vh 40vh;
+}
+
+.mainHeader {
+  grid-area: main;
+  overflow-x: hidden;
+}
+.mainHeader header {
+  padding-top: 3rem;
+  padding-left: 6%;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.imgs img {
+  vertical-align: middle;
+}
+
+nav {
+  margin-left: 4rem;
+}
+nav li {
+  display: inline-block;
+  padding: 0rem 1rem;
+}
+nav li a {
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+nav li a::after {
+  content: "";
+  width: 100%;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+  height: 2px;
+  position: absolute;
+  background-color: white;
+  bottom: -3px;
+  left: 0px;
+}
+nav li a:hover::after {
+  transform: scale(1);
+}
+
+.slide {
+  height: 100%;
+  display: flex;
+}
+.slide img {
+  flex-shrink: 0;
+}
+
+.text2 {
+  padding: 0rem 3rem;
+}
+
+.discover, .aboutUs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discover {
+  grid-area: text1;
+  position: relative;
+}
+
+.replace {
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  left: 0px;
+}
+.replace img {
+  cursor: pointer;
+  background-color: black;
+  padding: 2rem 2.5rem;
+}
+.replace img:hover {
+  background-color: #454545;
+}
+
+.text {
+  width: min(430px, 100%);
+  margin: 0px auto;
+}
+.text h1 {
+  font-size: 3rem;
+}
+.text button, .text svg path {
+  transition: 0.2s linear;
+}
+.text button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 1.3rem;
+  cursor: pointer;
+  letter-spacing: 10px;
+}
+.text button svg {
+  vertical-align: middle;
+  margin-left: 20px;
+}
+.text button:hover {
+  color: #a1a1a1;
+}
+.text button:hover svg path {
+  fill: #a1a1a1;
+}
+
+.text h3, .aboutUs h3 {
+  color: #a1a1a1;
+  margin: 2rem 0rem;
+  line-height: 25px;
+}
+
+.left-img {
+  grid-area: LP;
+}
+
+.aboutUs {
+  grid-area: about;
+}
+.aboutUs h2 {
+  letter-spacing: 8px;
+}
+
+.chair {
+  grid-area: chair;
+}
+
+.overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+  .gridMain {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "main main" "LP text1" "about chair";
+    grid-template-rows: auto;
+  }
+
+  .mainHeader {
+    width: 100%;
+  }
+
+  .text, .text2 {
+    margin: 6rem 0rem;
+    padding: 0rem 3rem;
+  }
+
+  .text h1 {
+    font-size: clamp(2rem ,3vw, 3rem);
+  }
+
+  .text2 h2 {
+    font-size: clamp(1rem, 2vw, 2rem);
+  }
+
+  .replace {
+    top: -72px;
+    right: 0px;
+    bottom: inherit;
+    left: inherit;
+  }
+}
+@media (max-width: 769px) {
+  .gridMain {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main" "text1" "LP" "about" "chair";
+  }
+
+  .text {
+    width: 100%;
+  }
+  .text button {
+    font-size: 1.1rem;
+  }
+
+  .replace {
+    top: -48px;
+  }
+  .replace img {
+    padding: 1rem 1.5rem;
+  }
+}
+@media (max-width: 550px) {
+  .open, .close {
+    display: block;
+  }
+
+  nav {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    transform: translateY(-300px);
+    transition: transform 0.6s linear;
+    left: 0px;
+    margin: 0px;
+  }
+  nav ul {
+    padding: 3.5rem 0rem;
+    display: flex;
+    align-items: center;
+  }
+  nav ul li a {
+    font-weight: 700;
+    color: black;
+  }
+  nav ul li:nth-child(2) {
+    margin-left: auto;
+  }
+
+  .mainHeader {
+    min-height: 400px;
+  }
+
+  img:not(.logo) {
+    object-position: center;
+  }
+
+  header .imgs {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 550px) {
+  .overlay {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
